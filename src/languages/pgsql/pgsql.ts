@@ -44,6 +44,7 @@ export const language = <languages.IMonarchLanguage>{
 	],
 
 	keywords: [
+		'nasnuvens-rpinep-dev',
 		'ALL',
 		'ANALYSE',
 		'ANALYZE',
