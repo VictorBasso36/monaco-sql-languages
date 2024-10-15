@@ -1,6 +1,6 @@
 {
 	"name": "google-bq-monaco-languages",
-	"version": "1.0",
+	"version": "0.12.3",
 	"description": "google-bq SQL languages for the Monaco Editor, based on monaco-languages.",
 	"scripts": {
 		"prepublishOnly": "npm run build",
@@ -17,7 +17,7 @@
 		"release": "node ./scripts/bumpVersion.js",
 		"publish": "npm publish"
 	},
-	"author": "Basso dev",
+	"author": "BassoDev_",
 	"license": "MIT",
 	"main": "esm/main.js",
 	"module": "esm/main.js",
