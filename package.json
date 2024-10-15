@@ -1,7 +1,7 @@
 {
-	"name": "monaco-sql-languages",
-	"version": "0.12.2",
-	"description": "SQL languages for the Monaco Editor, based on monaco-languages.",
+	"name": "google-bq-monaco-languages",
+	"version": "1.0",
+	"description": "google-bq SQL languages for the Monaco Editor, based on monaco-languages.",
 	"scripts": {
 		"prepublishOnly": "npm run build",
 		"build": "rm -rf ./esm && tsc -p ./tsconfig.esm.json",
@@ -14,9 +14,10 @@
 		"format": "prettier --write .",
 		"prettier-check": "prettier --check .",
 		"check-types": "tsc -p ./tsconfig.json",
-		"release": "node ./scripts/bumpVersion.js"
+		"release": "node ./scripts/bumpVersion.js",
+		"publish": "npm publish"
 	},
-	"author": "DTStack Corporation",
+	"author": "Basso dev",
 	"license": "MIT",
 	"main": "esm/main.js",
 	"module": "esm/main.js",
@@ -34,11 +35,12 @@
 		"postgresql",
 		"flink",
 		"trino",
-		"impala"
+		"impala",
+		"google-cloud monaco linter"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/DTStack/monaco-sql-languages.git"
+		"url": "https://github.com/VictorBasso36/monaco-sql-languages"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/"

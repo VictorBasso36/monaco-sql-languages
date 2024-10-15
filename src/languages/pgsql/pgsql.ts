@@ -983,7 +983,7 @@ export const language = <languages.IMonarchLanguage>{
 			[/[;,.]/, TokenClassConsts.DELIMITER],
 			[/[\(\)\[\]\{\}]/, '@brackets'],
 			[
-				/[\w@#$]+/,
+				/[\w@#$.\-]+/, // Alterado para permitir '.' e '-'
 				{
 					cases: {
 						'@scopeKeywords': TokenClassConsts.KEYWORD_SCOPE,
@@ -1005,8 +1005,6 @@ export const language = <languages.IMonarchLanguage>{
 		],
 		comment: [
 			[/[^*/]+/, TokenClassConsts.COMMENT],
-			// Not supporting nested comments, as nested comments seem to not be standard?
-			// [/\/\*/, { token: 'comment.quote', next: '@push' }],    // nested comment not allowed :-(
 			[/\*\//, { token: TokenClassConsts.COMMENT_QUOTE, next: '@pop' }],
 			[/./, TokenClassConsts.COMMENT]
 		],
@@ -1014,13 +1012,13 @@ export const language = <languages.IMonarchLanguage>{
 			// Not support
 		],
 		customParams: [
-			[/\${[A-Za-z0-9._-]*}/, TokenClassConsts.VARIABLE],
-			[/\@\@{[A-Za-z0-9._-]*}/, TokenClassConsts.VARIABLE]
+			[/\\${[A-Za-z0-9._-]*}/, TokenClassConsts.VARIABLE],
+			[/\\@\\@{[A-Za-z0-9._-]*}/, TokenClassConsts.VARIABLE]
 		],
 		numbers: [
 			[/0[xX][0-9a-fA-F]*/, TokenClassConsts.NUMBER_HEX],
-			[/[$][+-]*\d*(\.\d*)?/, TokenClassConsts.NUMBER],
-			[/((\d+(\.\d*)?)|(\.\d+))([eE][\-+]?\d+)?/, TokenClassConsts.NUMBER]
+			[/\$[+-]?\d*(\.\d*)?/, TokenClassConsts.NUMBER], // Corrigido
+			[/((\d+(\.\d*)?)|(\.\d+))([eE][\-+]?\d+)?/, TokenClassConsts.NUMBER] // Corrigido
 		],
 		strings: [
 			[/'/, { token: TokenClassConsts.STRING, next: '@string' }],
