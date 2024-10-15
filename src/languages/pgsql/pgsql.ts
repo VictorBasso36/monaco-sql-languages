@@ -981,10 +981,9 @@ export const language = <languages.IMonarchLanguage>{
 			{ include: '@complexIdentifiers' },
 			{ include: '@scopes' },
 			{ include: '@complexDataTypes' },
-			[/[;,.]/, TokenClassConsts.DELIMITER],
 			[/[\(\)\[\]\{\}]/, '@brackets'],
 			[
-				/[\w@#$.\-]+/, // Alterado para permitir '.' e '-'
+				/[\w@#$.\-]+/, // Permitir '.' e '-'
 				{
 					cases: {
 						'@scopeKeywords': TokenClassConsts.KEYWORD_SCOPE,
@@ -1036,7 +1035,8 @@ export const language = <languages.IMonarchLanguage>{
 			[/"/, { token: TokenClassConsts.STRING, next: '@pop' }]
 		],
 		complexIdentifiers: [
-			[/`/, { token: TokenClassConsts.IDENTIFIER_QUOTE, next: '@quotedIdentifier' }]
+			[/`/, { token: TokenClassConsts.IDENTIFIER_QUOTE, next: '@quotedIdentifier' }],
+			[/[\w@#$.\-]+/, TokenClassConsts.IDENTIFIER]
 		],
 		quotedIdentifier: [
 			[/[^`]+/, TokenClassConsts.IDENTIFIER_QUOTE],
